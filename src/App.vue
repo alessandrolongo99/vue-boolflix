@@ -3,6 +3,7 @@
     <AppHeader />
     <input type="text" v-model="name" />
     <button @click="searchMedia">Search</button>
+
     <h2>FILM</h2>
     <div class="card" v-for="(movie, movieIndex) in movies" :key="movieIndex">
       <div>
@@ -14,8 +15,11 @@
         Lingua originale:
         <img class="flag" :src="getFlag(movie.original_language)" alt="" />
       </div>
-      <div>Voto: {{ movie.vote_average }}</div>
+      <div>
+        <i class="fa-solid fa-star"></i>
+      </div>
     </div>
+
     <h2>SERIE TV</h2>
     <div
       class="card"
@@ -50,6 +54,7 @@ export default {
       movies: [],
       TVSeries: [],
       name: "",
+      stars: 0,
       posterInitialPath: "https://image.tmdb.org/t/p/",
       apiKey: "666c60c46937c74d09eb7327646c579d",
     };
@@ -85,14 +90,20 @@ export default {
     getFlag(language) {
       return `https://www.unknown.nu/flags/images/${language}-100`;
     },
+    changeVoteInStars(vote){
+      this.stars = Math.ceil(vote / 2)
+    }
   },
 };
 </script>
 
 <style lang="scss">
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css';
+
 .card {
   padding: 1rem 0;
 }
+
 .flag {
   height: 1rem;
 }
