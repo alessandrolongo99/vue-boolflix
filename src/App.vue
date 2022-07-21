@@ -16,7 +16,12 @@
         <img class="flag" :src="getFlag(movie.original_language)" alt="" />
       </div>
       <div>
-        <i class="fa-solid fa-star"></i>
+        Voto:
+        <i
+          v-for="(star, index) in changeVoteInStars(movie.vote_average)"
+          :key="'b' + index"
+          class="fa-solid fa-star"
+        ></i>
       </div>
     </div>
 
@@ -35,7 +40,14 @@
         Lingua originale:
         <img class="flag" :src="getFlag(series.original_language)" alt="" />
       </div>
-      <div>Voto: {{ series.vote_average }}</div>
+      <div>
+        Voto:
+        <i
+          v-for="(star, index) in changeVoteInStars(series.vote_average)"
+          :key="'c' + index"
+          class="fa-solid fa-star"
+        ></i>
+      </div>
     </div>
   </div>
 </template>
@@ -54,7 +66,6 @@ export default {
       movies: [],
       TVSeries: [],
       name: "",
-      stars: 0,
       posterInitialPath: "https://image.tmdb.org/t/p/",
       apiKey: "666c60c46937c74d09eb7327646c579d",
     };
@@ -90,15 +101,15 @@ export default {
     getFlag(language) {
       return `https://www.unknown.nu/flags/images/${language}-100`;
     },
-    changeVoteInStars(vote){
-      this.stars = Math.ceil(vote / 2)
-    }
+    changeVoteInStars(vote) {
+      return Math.ceil(vote / 2);
+    },
   },
 };
 </script>
 
 <style lang="scss">
-@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css';
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css";
 
 .card {
   padding: 1rem 0;
