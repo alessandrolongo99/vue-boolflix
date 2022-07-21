@@ -1,28 +1,46 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <AppHeader/>
+    <input type="text" v-model="name">
+    <button @click="searchName">Search</button>
+    <div class="card" v-for="(movie, index) in movies" :key="index">
+      <div>Titolo: {{movie.title}}</div>
+      <div>Titolo originale: {{movie.original_title}}</div>
+      <div>Lingua originale: {{movie.original_language}}</div>
+      <div>Voto: {{movie.vote_average}}</div>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppHeader from './components/AppHeader.vue'
+import axios from 'axios'
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    AppHeader,
+  },
+  data: function(){
+    return{
+      movies: [],
+      name: '',
+    }
+  },
+  methods: {
+    searchName(){
+      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=666c60c46937c74d09eb7327646c579d&language=it-IT&query=${this.name}`)
+      .then((results) =>{      
+          this.movies = results.data.results;
+          console.log(this.movies)
+      })
+    },
   }
-}
+};
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.card{
+  padding: 1rem 0;
 }
 </style>
