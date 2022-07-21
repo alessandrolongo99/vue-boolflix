@@ -2,25 +2,34 @@
   <div id="app">
     <AppHeader />
     <input type="text" v-model="name" />
-    <button @click="searchMovies">Search</button>
-    <button @click="searchTVSeries">Search</button>
+    <button @click="searchMedia">Search</button>
     <h2>FILM</h2>
     <div class="card" v-for="(movie, movieIndex) in movies" :key="movieIndex">
+      <div>
+        <img :src="buildPosterPath(movie.poster_path)" alt="" />
+      </div>
       <div>Titolo: {{ movie.title }}</div>
       <div>Titolo originale: {{ movie.original_title }}</div>
       <div>
         Lingua originale:
-        <img :src="getFlag(movie.original_language)" alt="" />
+        <img class="flag" :src="getFlag(movie.original_language)" alt="" />
       </div>
       <div>Voto: {{ movie.vote_average }}</div>
     </div>
     <h2>SERIE TV</h2>
-    <div class="card" v-for="(series, seriesIndex) in TVSeries" :key="seriesIndex">
+    <div
+      class="card"
+      v-for="(series, seriesIndex) in TVSeries"
+      :key="'a' + seriesIndex"
+    >
+      <div>
+        <img :src="buildPosterPath(series.poster_path)" alt="" />
+      </div>
       <div>Titolo: {{ series.name }}</div>
       <div>Titolo originale: {{ series.original_name }}</div>
       <div>
         Lingua originale:
-        <img :src="getFlag(series.original_language)" alt="" />
+        <img class="flag" :src="getFlag(series.original_language)" alt="" />
       </div>
       <div>Voto: {{ series.vote_average }}</div>
     </div>
@@ -41,10 +50,18 @@ export default {
       movies: [],
       TVSeries: [],
       name: "",
+      posterInitialPath: "https://image.tmdb.org/t/p/",
       apiKey: "666c60c46937c74d09eb7327646c579d",
     };
   },
   methods: {
+    searchMedia() {
+      this.searchMovies();
+      this.searchTVSeries();
+    },
+    buildPosterPath(input) {
+      return this.posterInitialPath + "w154" + input;
+    },
     searchMovies() {
       axios
         .get(
@@ -76,7 +93,7 @@ export default {
 .card {
   padding: 1rem 0;
 }
-img{
+.flag {
   height: 1rem;
 }
 </style>
