@@ -41,7 +41,7 @@ export default {
 
   methods: {
     buildPosterPath(input) {
-      console.log(this.posterInitialPath + "w154" + input);
+        return this.posterInitialPath + "w154" + input;
     },
 
     getFlag(language) {
