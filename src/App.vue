@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <AppHeader />
+    <AppMain />
     <input type="text" v-model="name" />
     <button @click="searchMedia">Search</button>
 
@@ -54,12 +55,14 @@
 
 <script>
 import AppHeader from "./components/AppHeader.vue";
+import AppMain from "./components/AppMain.vue";
 import axios from "axios";
 
 export default {
   name: "App",
   components: {
     AppHeader,
+    AppMain,
   },
   data: function () {
     return {
