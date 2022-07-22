@@ -45,6 +45,24 @@ export default {
         });
     },
   },
+
+  created() {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/trending/movie/day?api_key=${this.apiKey}`
+      )
+      .then((results) => {
+        this.movies = results.data.results;
+      });
+
+    axios
+      .get(
+        `https://api.themoviedb.org/3/trending/tv/day?api_key=${this.apiKey}`
+      )
+      .then((results) => {
+        this.TVSeries = results.data.results;
+      });
+  },
 };
 </script>
 
