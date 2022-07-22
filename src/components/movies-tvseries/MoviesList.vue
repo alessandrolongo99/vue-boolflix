@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <h2 class="text-white">FILM</h2>
+    <h2 class="text-white pt-5 mb-0">FILM</h2>
     <AppCards
       v-for="movie in moviesFromMain"
       :key="movie.id"
@@ -9,6 +9,7 @@
       :originalTitle="movie.original_title"
       :language="movie.original_language"
       :vote="movie.vote_average"
+      :overview="movie.overview"
     />
   </div>
 </template>

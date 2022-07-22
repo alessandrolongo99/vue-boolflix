@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <h2 class="text-white">SERIE TV</h2>
+    <h2 class="text-white pt-5 mb-0">SERIE TV</h2>
     <AppCards
       v-for="series in seriesFromMain"
       :key="series.id"
@@ -9,6 +9,7 @@
       :originalTitle="series.original_name"
       :language="series.original_language"
       :vote="series.vote_average"
+      :overview="series.overview"
     />
   </div>
 </template>

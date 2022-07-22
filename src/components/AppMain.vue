@@ -1,6 +1,6 @@
 <template>
   <main class="bg-dark">
-    <div class="container">
+    <div class="container pb-5 mb-0">
       <MoviesList :moviesFromMain="moviesFromApp" />
       <TVSeriesList :seriesFromMain="seriesFromApp" />
     </div>
