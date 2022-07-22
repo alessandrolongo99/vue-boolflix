@@ -25,8 +25,10 @@
 
 <script>
 export default {
-  data: {
-    posterInitialPath: "https://image.tmdb.org/t/p/",
+  data: function () {
+    return {
+      posterInitialPath: "https://image.tmdb.org/t/p/",
+    };
   },
 
   props: {
