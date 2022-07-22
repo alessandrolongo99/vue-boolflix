@@ -1,8 +1,15 @@
 <template>
-  <div>
-    <input type="text" v-model="name" @keyup.enter="$emit('search', name)" />
-    <button @click="$emit('search', name)">Search</button>
-  </div>
+  <header class="bg-black">
+    <div class="container d-flex align-items-center justify-content-between">
+      <h1 class="text-danger">BOOLFLIX</h1>
+      <input
+        type="text"
+        placeholder="Search"
+        v-model.trim="name"
+        @keyup.enter="$emit('search', name)"
+      />
+    </div>
+  </header>
 </template>
 
 <script>

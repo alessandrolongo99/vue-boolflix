@@ -1,8 +1,10 @@
 <template>
-  <div>
-    <MoviesList :moviesFromMain="moviesFromApp"/>
-    <TVSeriesList :seriesFromMain="seriesFromApp"/>
-  </div>
+  <main class="bg-dark">
+    <div class="container">
+      <MoviesList :moviesFromMain="moviesFromApp" />
+      <TVSeriesList :seriesFromMain="seriesFromApp" />
+    </div>
+  </main>
 </template>
 
 <script>
@@ -16,7 +18,7 @@ export default {
     TVSeriesList,
   },
 
-  props:{
+  props: {
     moviesFromApp: Array,
     seriesFromApp: Array,
   },

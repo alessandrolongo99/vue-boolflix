@@ -34,7 +34,6 @@ export default {
         )
         .then((results) => {
           this.movies = results.data.results;
-          console.log(this.movies);
         });
 
       axios
@@ -43,7 +42,6 @@ export default {
         )
         .then((results) => {
           this.TVSeries = results.data.results;
-          console.log(this.TVSeries);
         });
     },
   },
@@ -51,4 +49,5 @@ export default {
 </script>
 
 <style lang="scss">
+@import "~bootstrap/scss/bootstrap";
 </style>

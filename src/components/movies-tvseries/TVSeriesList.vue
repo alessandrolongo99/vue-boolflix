@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h2>SERIE TV</h2>
+  <div class="row">
+    <h2 class="text-white">SERIE TV</h2>
     <AppCards
       v-for="series in seriesFromMain"
       :key="series.id"

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h2>FILM</h2>
+  <div class="row">
+    <h2 class="text-white">FILM</h2>
     <AppCards
       v-for="movie in moviesFromMain"
       :key="movie.id"

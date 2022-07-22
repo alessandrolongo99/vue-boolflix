@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card col-3">
     <div>
       <img :src="buildPosterPath(poster)" :alt="title" />
     </div>
@@ -41,7 +41,7 @@ export default {
 
   methods: {
     buildPosterPath(input) {
-        return this.posterInitialPath + "w154" + input;
+      return this.posterInitialPath + "w342" + input;
     },
 
     getFlag(language) {
