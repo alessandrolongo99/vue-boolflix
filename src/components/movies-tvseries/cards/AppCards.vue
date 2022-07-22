@@ -1,5 +1,5 @@
 <template>
-  <div class="col-3 p-0 g-5">
+  <div class="col-3 g-3">
     <div class="poster">
       <img :src="buildPosterPath(poster)" :alt="title" />
     </div>
@@ -57,9 +57,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css";
-.al-card {
-}
-
 .flag {
   height: 1rem;
 }
@@ -73,9 +70,9 @@ export default {
   width: 100%;
   img {
     height: 100%;
+    width: 100%;
     object-fit: cover;
     object-position: center top;
-    overflow: hidden;
   }
 }
 </style>
