@@ -1,10 +1,10 @@
 <template>
-  <div class="card col-3">
-    <div>
+  <div class="col-3 p-0 g-5">
+    <div class="poster">
       <img :src="buildPosterPath(poster)" :alt="title" />
     </div>
 
-    <div>Titolo: {{ title }}</div>
+    <!-- <div>Titolo: {{ title }}</div>
     <div>Titolo originale: {{ originalTitle }}</div>
 
     <div>
@@ -12,14 +12,14 @@
       <img class="flag" :src="getFlag(language)" :alt="language" />
     </div>
 
-    <div>
+    <div class="stars">
       Voto:
       <i
         v-for="(star, index) in changeVoteInStars(vote)"
         :key="index"
         class="fa-solid fa-star"
       ></i>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -55,14 +55,27 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css";
-
-.card {
-  padding: 1rem 0;
+.al-card {
 }
 
 .flag {
   height: 1rem;
+}
+
+.stars i {
+  color: gold;
+}
+
+.poster {
+  height: 100%;
+  width: 100%;
+  img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    overflow: hidden;
+  }
 }
 </style>
