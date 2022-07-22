@@ -1,20 +1,24 @@
 <template>
   <div>
-    <AppCards />
+    <h2>SERIE TV</h2>
+    <!-- <AppCards /> -->
   </div>
 </template>
 
 <script>
-import AppCards from './cards/AppCards.vue'
+// import AppCards from "./cards/AppCards.vue";
 
 export default {
-    name: 'TVSeriesList',
-    components: {
-        AppCards,
-    }
-}
+  name: "TVSeriesList",
+  components: {
+    // AppCards,
+  },
+
+  props: {
+    seriesFromMain: Array,
+  },
+};
 </script>
 
-<style>
-
+<style scoped>
 </style>
