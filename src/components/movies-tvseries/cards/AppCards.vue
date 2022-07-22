@@ -1,25 +1,31 @@
 <template>
-  <div class="col-3 g-3">
+  <div
+    @mouseover="hover = true"
+    @mouseleave="hover = false"
+    class="col-3 g-3 position-relative"
+  >
     <div class="poster">
       <img :src="buildPosterPath(poster)" :alt="title" />
     </div>
 
-    <!-- <div>Titolo: {{ title }}</div>
-    <div>Titolo originale: {{ originalTitle }}</div>
+    <div v-show="hover" class="al-info text-white position-absolute">
+      <div>Titolo: {{ title }}</div>
+      <div>Titolo originale: {{ originalTitle }}</div>
 
-    <div>
-      Lingua originale:
-      <img class="flag" :src="getFlag(language)" :alt="language" />
+      <div>
+        Lingua originale:
+        <img class="flag" :src="getFlag(language)" :alt="language" />
+      </div>
+
+      <div class="stars">
+        Voto:
+        <i
+          v-for="(star, index) in changeVoteInStars(vote)"
+          :key="index"
+          class="fa-solid fa-star"
+        ></i>
+      </div>
     </div>
-
-    <div class="stars">
-      Voto:
-      <i
-        v-for="(star, index) in changeVoteInStars(vote)"
-        :key="index"
-        class="fa-solid fa-star"
-      ></i>
-    </div> -->
   </div>
 </template>
 
@@ -28,6 +34,7 @@ export default {
   data: function () {
     return {
       posterInitialPath: "https://image.tmdb.org/t/p/",
+      hover: false,
     };
   },
 
@@ -74,5 +81,15 @@ export default {
     object-fit: cover;
     object-position: center top;
   }
+}
+
+.al-info {
+  background-color: rgba(0, 0, 0, 0.582);
+  background-image: url();
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  margin: 0 8px;
 }
 </style>
