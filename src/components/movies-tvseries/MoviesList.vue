@@ -10,12 +10,14 @@
       :language="movie.original_language"
       :vote="movie.vote_average"
       :overview="movie.overview"
+      :cast="searchCast(movie.id)"
     />
   </div>
 </template>
 
 <script>
 import AppCards from "./cards/AppCards.vue";
+import axios from "axios";
 
 export default {
   name: "MoviesList",
@@ -25,6 +27,19 @@ export default {
 
   props: {
     moviesFromMain: Array,
+  },
+
+  methods: {
+    searchCast(id) {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/movie/${id}/credits?api_key=666c60c46937c74d09eb7327646c579d`
+        )
+        .then((results) => {
+          this.cast = results.data.cast;
+          console.log(this.cast)
+        });
+    },
   },
 };
 </script>

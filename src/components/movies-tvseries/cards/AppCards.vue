@@ -6,7 +6,18 @@
   >
     <div class="poster">
       <img v-if="poster != null" :src="buildPosterPath(poster)" :alt="title" />
-      <div class="al-place-holder-img bg-secondary d-flex justify-content-center align-items-center" v-else><i class="fa-solid fa-5x fa-images"></i></div>
+      <div
+        class="
+          al-place-holder-img
+          bg-secondary
+          d-flex
+          justify-content-center
+          align-items-center
+        "
+        v-else
+      >
+        <i class="fa-solid fa-5x fa-images"></i>
+      </div>
     </div>
 
     <div v-show="hover" class="al-info text-white position-absolute">
@@ -33,6 +44,11 @@
         <span class="fw-bold">Overview:</span>
         {{ overview }}
       </div>
+
+      <div>
+        <span class="fw-bold">Cast:</span>
+        <span v-for="actor in cast" :key="actor.id">{{ actor.name }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -53,10 +69,12 @@ export default {
     language: String,
     vote: Number,
     overview: String,
+    cast: Array,
   },
 
   methods: {
     buildPosterPath(input) {
+      console.log(this.cast)
       return this.posterInitialPath + "w342" + input;
     },
 
@@ -74,8 +92,8 @@ export default {
 <style lang="scss" scoped>
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css";
 
-.al-card{
-    min-height: 450px;
+.al-card {
+  min-height: 450px;
 }
 
 .flag {
@@ -109,8 +127,8 @@ export default {
   overflow: auto;
 }
 
-.al-place-holder-img{
-    height: 100%;
-    width: 100%;
+.al-place-holder-img {
+  height: 100%;
+  width: 100%;
 }
 </style>
