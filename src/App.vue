@@ -46,6 +46,7 @@ export default {
     },
   },
 
+// CALL TO TRENDING MEDIA
   created() {
     axios
       .get(

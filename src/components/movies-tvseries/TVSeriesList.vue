@@ -25,6 +25,12 @@ export default {
     AppCards,
   },
 
+  data: function(){
+    return{
+      cast: [],
+    }
+  },
+
   props: {
     seriesFromMain: Array,
   },
@@ -37,8 +43,8 @@ export default {
         )
         .then((results) => {
           this.cast = results.data.cast;
-          console.log(this.cast)
         });
+        return this.cast;
     },
   },
 };
